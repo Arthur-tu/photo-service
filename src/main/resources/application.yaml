@@ -1,0 +1,15 @@
+spring:
+  application:
+    name: "photo-service"
+
+aws.s3:
+  endpoint: http://localhost:9000
+  signer: AWSS3V4SignerType
+  access-key: wwKNvdP6SXqNOLLX
+  secret-key: Us2h9bu39Ea7pYE0OpPXuEeu91LzOaBS
+  region: ru-center
+  bucket-photos: jpg-bucket
+
+
+server:
+  port: 9990
