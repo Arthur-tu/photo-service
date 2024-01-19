@@ -1,5 +1,6 @@
 package ru.microservice.photoservice.controllers;
 
+import io.swagger.v3.oas.annotations.Operation;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
@@ -14,17 +15,15 @@ import java.io.IOException;
 @RequestMapping(value = "/api/v1/photos")
 public class PhotosController {
     private final PhotosService photosService;
-
+    @Operation(summary = "Загрузка в minio")
     @PostMapping("/upload")
     public String uploadPhoto(@RequestParam("image") MultipartFile photo) throws IOException {
         String photoFileName = photo.getOriginalFilename();
-        log.info("S3 загрузило фото {}", photoFileName);
         return photosService.uploadPhoto(photoFileName, photo);
     }
-
+    @Operation(summary = "Удаление из minio")
     @DeleteMapping("/delete")
-    public String deletePhoto(@RequestParam("fileName") String fileName) throws IOException {
-        log.info("S3 удалило фото {}", fileName);
+    public String deletePhoto(@RequestParam("fileName") String fileName) {
         return photosService.deletePhoto(fileName);
     }
 

@@ -1,0 +1,68 @@
+databaseChangeLog:
+  - changeSet:
+      id: 000-1
+      author: artur_tu
+      changes:
+        - createTable:
+            tableName: posts
+            columns:
+              - column:
+                  name: uuid
+                  type: uuid
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: title
+                  type: varchar
+                  constraints:
+                    nullable: false
+              - column:
+                  name: user_uuid
+                  type: uuid
+                  constraints:
+                    nullable: false
+              - column:
+                  name: descriptions
+                  type: varchar
+                  constraints:
+                    nullable: false
+
+  - changeSet:
+      id: 000-2
+      author: artur_tu
+      changes:
+        - createTable:
+            tableName: photos
+            columns:
+              - column:
+                  name: uuid
+                  type: uuid
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: link
+                  type: varchar
+                  constraints:
+                    nullable: false
+              - column:
+                  name: name
+                  type: varchar
+                  constraints:
+                    nullable: false
+              - column:
+                  name: post_id
+                  type: uuid
+                  constraints:
+                    nullable: false
+  - changeSet:
+      id: 000-3
+      author: artur_tu
+      changes:
+        - addForeignKeyConstraint:
+            constraintName: post_id
+            baseTableName: photos
+            baseColumnNames: post_id
+            referencedTableName: posts
+            referencedColumnNames: uuid

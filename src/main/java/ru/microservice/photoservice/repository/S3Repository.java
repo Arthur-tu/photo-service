@@ -8,6 +8,7 @@ import com.amazonaws.services.s3.model.S3ObjectSummary;
 import lombok.RequiredArgsConstructor;
 
 import java.io.InputStream;
+import java.net.URL;
 import java.util.Collection;
 import java.util.Optional;
 
@@ -36,5 +37,9 @@ public class S3Repository {
         } catch (AmazonServiceException exception) {
             return Optional.empty();
         }
+    }
+
+    public URL getURL(String keyName) {
+        return client.getUrl(bucketName,keyName);
     }
 }

@@ -1,15 +1,23 @@
 spring:
   application:
     name: "photo-service"
+  datasource:
+    url: jdbc:postgresql://localhost:5432/postgres
+    username: postgres
+    password: 123
+    driver-class-name: org.postgresql.Driver
 
 aws.s3:
   endpoint: http://localhost:9000
   signer: AWSS3V4SignerType
-  access-key: wwKNvdP6SXqNOLLX
-  secret-key: Us2h9bu39Ea7pYE0OpPXuEeu91LzOaBS
+  access-key: 2gj8LztavpXcoLtk
+  secret-key: MhqjMJqXqQogbRuXHopBCcrYIG4FVJNF
   region: ru-center
   bucket-photos: jpg-bucket
 
-
 server:
   port: 9990
+
+springdoc:
+  swagger-ui:
+    path: /doc-ui
